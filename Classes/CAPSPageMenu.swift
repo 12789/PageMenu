@@ -239,10 +239,8 @@ extension CAPSPageMenu {
         controllerScrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(controllerArray.count), height: self.view.frame.height - configuration.menuHeight)
         
         let oldCurrentOrientationIsPortrait : Bool = currentOrientationIsPortrait
+        currentOrientationIsPortrait = UIApplication.shared.statusBarOrientation.isPortrait
         
-        if UIApplication.shared.statusBarOrientation != UIDeviceOrientation.unknown {
-            currentOrientationIsPortrait = UIApplication.shared.statusBarOrientation.isPortrait || UIApplication.shared.statusBarOrientation.isFlat
-        }
         
         if (oldCurrentOrientationIsPortrait && UIApplication.shared.statusBarOrientation.isLandscape) || (!oldCurrentOrientationIsPortrait && (UIApplication.shared.statusBarOrientation.isPortrait || UIDevice.current.orientation.isFlat)) {
             didLayoutSubviewsAfterRotation = true
